@@ -1,0 +1,77 @@
+{
+  "metadata": {
+    "kernelspec": {
+      "name": "xpython",
+      "display_name": "Python 3.13 (XPython)",
+      "language": "python"
+    },
+    "language_info": {
+      "codemirror_mode": {
+        "name": "ipython",
+        "version": 3
+      },
+      "file_extension": ".py",
+      "mimetype": "text/x-python",
+      "name": "python",
+      "nbconvert_exporter": "python",
+      "pygments_lexer": "ipython3",
+      "version": "3.13.1"
+    }
+  },
+  "nbformat_minor": 5,
+  "nbformat": 4,
+  "cells": [
+    {
+      "id": "1f4ed6cd-72bd-4f1f-925d-eb38e6b27f3e",
+      "cell_type": "code",
+      "source": "import numpy as np\nprint(np.random.seed(1))\narr=np.random.randint(10,size=(2,5))\nprint(arr)\nprint(arr.ndim)\nprint(arr.shape)\nprint(arr.size)\nprint(arr.dtype)\nprint(arr.itemsize)\nprint(arr.nbytes)\nprint(arr[1,4])\nprint(arr[-1,-2])\nprint(arr[:2,:3])\nprint(arr[1:2,:3])\nprint(arr[:,0])\nprint(arr[0,:])",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "None\n[[5 8 9 5 0]\n [0 1 7 6 9]]\n2\n(2, 5)\n10\nint32\n4\n40\n9\n6\n[[5 8 9]\n [0 1 7]]\n[[0 1 7]]\n[5 0]\n[5 8 9 5 0]\n"
+        }
+      ],
+      "execution_count": 10
+    },
+    {
+      "id": "b7ebe400-7205-4d70-99a8-e11097b72ec4",
+      "cell_type": "code",
+      "source": "print(np.random.seed(1))\narr1=np.random.randint(10,size=5)\nprint(arr1)\nprint(arr1[3])\nprint(arr1[-2])\nprint(arr1[3:2:2])\nprint(arr1[::-1])\narr1[2]=10\nprint(arr1)",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "None\n[5 8 9 5 0]\n5\n5\n[]\n[0 5 9 8 5]\n[ 5  8 10  5  0]\n"
+        }
+      ],
+      "execution_count": 12
+    },
+    {
+      "id": "ac58f90e-1a0d-4637-9ea0-a4b09ed02ee3",
+      "cell_type": "code",
+      "source": "\n\n\n",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [],
+      "execution_count": null
+    },
+    {
+      "id": "84745961-1eea-4a23-9695-c63b0a0d7d5c",
+      "cell_type": "code",
+      "source": "",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [],
+      "execution_count": null
+    }
+  ]
+}
