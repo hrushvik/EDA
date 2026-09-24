@@ -1,0 +1,115 @@
+{
+  "metadata": {
+    "kernelspec": {
+      "name": "xpython",
+      "display_name": "Python 3.13 (XPython)",
+      "language": "python"
+    },
+    "language_info": {
+      "codemirror_mode": {
+        "name": "ipython",
+        "version": 3
+      },
+      "file_extension": ".py",
+      "mimetype": "text/x-python",
+      "name": "python",
+      "nbconvert_exporter": "python",
+      "pygments_lexer": "ipython3",
+      "version": "3.13.1"
+    }
+  },
+  "nbformat_minor": 5,
+  "nbformat": 4,
+  "cells": [
+    {
+      "id": "0e11952b-6a56-411d-b2f5-7097b9ac6612",
+      "cell_type": "code",
+      "source": "import numpy as np\nx = np.random.randint(0, 100, size=10)\nprint(\"Original array:\", x)\nsorted_copy = np.sort(x)\nprint(\"Sorted with np.sort():\", sorted_copy)\nprint(\"After np.sort(), original still:\", x)\nx.sort()\nprint(\"After x.sort(), original is now:\", x)",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "Original array: [11 28 29 14 50 68 87 87 94 96]\nSorted with np.sort(): [11 14 28 29 50 68 87 87 94 96]\nAfter np.sort(), original still: [11 28 29 14 50 68 87 87 94 96]\nAfter x.sort(), original is now: [11 14 28 29 50 68 87 87 94 96]\n"
+        }
+      ],
+      "execution_count": 16
+    },
+    {
+      "id": "028769fe-4a70-4984-9a07-5022c1059771",
+      "cell_type": "code",
+      "source": "import numpy as np\nnp.random.seed(0)\narr = np.random.randint(0, 51, size=(4, 5))\nprint(\"Array:\\n\", arr)\nprint(\"Item size:\", arr.itemsize)\nprint(\"Total bytes:\", arr.nbytes)",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "Array:\n [[44 47  0  3  3]\n [39  9 19 21 50]\n [36 23  6 24 24]\n [12  1 38 39 23]]\nItem size: 4\nTotal bytes: 80\n"
+        }
+      ],
+      "execution_count": 17
+    },
+    {
+      "id": "07a86ff3-bb16-411e-ad70-a4b8901b7632",
+      "cell_type": "code",
+      "source": "import numpy as np\narr = np.arange(1, 21)\nprint(\"Array:\", arr)\nprint(\"ndim:\", arr.ndim)      \nprint(\"shape:\", arr.shape)    \nprint(\"size:\", arr.size)      \nprint(\"dtype:\", arr.dtype)",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "Array: [ 1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20]\nndim: 1\nshape: (20,)\nsize: 20\ndtype: int32\n"
+        }
+      ],
+      "execution_count": 18
+    },
+    {
+      "id": "da077151-d8dc-4f97-a7b7-ed3ea4f9908a",
+      "cell_type": "code",
+      "source": "import numpy as np\narr = np.arange(1, 13).reshape(3, 4)\nprint(\"Array:\\n\", arr)\nprint(\"Element at row 2, col 3:\", arr[1, 2])\nprint(\"Last row:\", arr[-1])\nprint(\"Last column:\", arr[:, -1])",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "Array:\n [[ 1  2  3  4]\n [ 5  6  7  8]\n [ 9 10 11 12]]\nElement at row 2, col 3: 7\nLast row: [ 9 10 11 12]\nLast column: [ 4  8 12]\n"
+        }
+      ],
+      "execution_count": 19
+    },
+    {
+      "id": "f76562ae-f798-4c3e-bbc2-6bca674a60cd",
+      "cell_type": "code",
+      "source": "import numpy as np\narr = np.arange(1, 13).reshape(3, 4)\nprint(\"Original Array:\\n\", arr)\nsubarray = arr[:2, :2]\nprint(\"\\n(a) First 2 rows & 2 cols:\\n\", subarray)\nalternate_cols = arr[:, ::2]\nprint(\"\\n(b) Every alternate column:\\n\", alternate_cols)\nreversed_cols = arr[:, ::-1]\nprint(\"\\n(c) Columns reversed:\\n\", reversed_cols)",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "Original Array:\n [[ 1  2  3  4]\n [ 5  6  7  8]\n [ 9 10 11 12]]\n\n(a) First 2 rows & 2 cols:\n [[1 2]\n [5 6]]\n\n(b) Every alternate column:\n [[ 1  3]\n [ 5  7]\n [ 9 11]]\n\n(c) Columns reversed:\n [[ 4  3  2  1]\n [ 8  7  6  5]\n [12 11 10  9]]\n"
+        }
+      ],
+      "execution_count": 20
+    },
+    {
+      "id": "f62abe99-7e6f-4bcf-855a-46433bd6898d",
+      "cell_type": "code",
+      "source": "",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [],
+      "execution_count": null
+    }
+  ]
+}
