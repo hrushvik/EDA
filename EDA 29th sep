@@ -1,0 +1,71 @@
+{
+  "metadata": {
+    "kernelspec": {
+      "name": "xpython",
+      "display_name": "Python 3.13 (XPython)",
+      "language": "python"
+    },
+    "language_info": {
+      "codemirror_mode": {
+        "name": "ipython",
+        "version": 3
+      },
+      "file_extension": ".py",
+      "mimetype": "text/x-python",
+      "name": "python",
+      "nbconvert_exporter": "python",
+      "pygments_lexer": "ipython3",
+      "version": "3.13.1"
+    }
+  },
+  "nbformat_minor": 5,
+  "nbformat": 4,
+  "cells": [
+    {
+      "id": "b196fb77-7276-4e74-acf3-c0aaefe8b4c1",
+      "cell_type": "code",
+      "source": "import numpy as np\n\nname = ['hrushvik', 'bob', 'anirudh', 'ram']\nage = [25, 22, 21, 23]\nweight = [55.5, 77.7, 88.8, 55.5]\n\ndata = np.zeros(\n    4,\n    dtype={\n        'names': ('name', 'age', 'weight'),\n        'formats': ('U10', 'i4', 'f8')\n    }\n)\n\nprint(\"Structured array using a compound data type\")\nprint(data.dtype)\n\ndata['name'] = name\ndata['age'] = age\ndata['weight'] = weight\n\nprint(\"\\nFilled structured array\")\nprint(data)\n\nprint(\"\\nAll names\")\nprint(data['name'])\n\nprint(\"\\nFirst row of data\")\nprint(data[0])\n\nprint(\"\\nName from the last row\")\nprint(data[-1]['name'])\n\nprint(\"\\nNames where age is under 22\")\nprint(data[data['age'] < 22]['name'])\n\n# Other ways to define the same structured dtype\nprint(\"\\nUsing a list of tuples:\")\nprint(np.dtype([\n    ('name', 'U10'),\n    ('age', 'i4'),\n    ('weight', 'f8')\n]))\n\nprint(\"\\nUsing a string:\")\nprint(np.dtype('U10,i4,f8'))\ntp = np.dtype([\n    ('id','i8'),\n    ('mat','f8',(3,3))\n])\nX = np.zeros(1,dtype=tp)\nprint(X[0])\nprint(X['mat'][0])",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "Structured array using a compound data type\n[('name', '<U10'), ('age', '<i4'), ('weight', '<f8')]\n\nFilled structured array\n[('hrushvik', 25, 55.5) ('bob', 22, 77.7) ('anirudh', 21, 88.8)\n ('ram', 23, 55.5)]\n\nAll names\n['hrushvik' 'bob' 'anirudh' 'ram']\n\nFirst row of data\n('hrushvik', 25, 55.5)\n\nName from the last row\nram\n\nNames where age is under 22\n['anirudh']\n\nUsing a list of tuples:\n[('name', '<U10'), ('age', '<i4'), ('weight', '<f8')]\n\nUsing a string:\n[('f0', '<U10'), ('f1', '<i4'), ('f2', '<f8')]\n(0, [[0.0, 0.0, 0.0], [0.0, 0.0, 0.0], [0.0, 0.0, 0.0]])\n[[0. 0. 0.]\n [0. 0. 0.]\n [0. 0. 0.]]\n"
+        }
+      ],
+      "execution_count": 22
+    },
+    {
+      "id": "94cd32f1-6979-48f6-a18c-b47f059f1928",
+      "cell_type": "code",
+      "source": "",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [],
+      "execution_count": null
+    },
+    {
+      "id": "cde1a3e0-fa41-4968-8f9d-5312ff529f15",
+      "cell_type": "code",
+      "source": "",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [],
+      "execution_count": null
+    },
+    {
+      "id": "62a4c28f-f10a-4133-aff1-464fcc3defa2",
+      "cell_type": "code",
+      "source": "",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [],
+      "execution_count": null
+    }
+  ]
+}
