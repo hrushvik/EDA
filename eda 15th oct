@@ -1,0 +1,80 @@
+{
+  "metadata": {
+    "kernelspec": {
+      "display_name": "Python (Pyodide)",
+      "language": "python",
+      "name": "python"
+    },
+    "language_info": {
+      "codemirror_mode": {
+        "name": "python",
+        "version": 3
+      },
+      "file_extension": ".py",
+      "mimetype": "text/x-python",
+      "name": "python",
+      "nbconvert_exporter": "python",
+      "pygments_lexer": "ipython3",
+      "version": "3.8"
+    }
+  },
+  "nbformat_minor": 5,
+  "nbformat": 4,
+  "cells": [
+    {
+      "id": "06be3d6f-1bbe-4b18-a95a-4d9c29bd9140",
+      "cell_type": "code",
+      "source": "import numpy as pd \nimport numpy as np",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [],
+      "execution_count": null
+    },
+    {
+      "id": "db96d4fe-f611-42b0-9ef1-b124ca8d07c8",
+      "cell_type": "code",
+      "source": "health_data['guido']\npop\npop['califorina',2000]\npop['california']\npop.loc['california':'new yourk']\npop[:,2000]\npop[pop>2000]\nhealth_data\nhealth_data['guido','HR']\nhealth_data.iloc[:2,:2]\nhealth_data.loc[:,('bob','HR')]\nidx = pd.IndexSlice\nhealth_data.loc[idx[:,1],idx[:,'HR']]\nindex = pd.multiIndex.from_product((['a','c','b'],[1,2]]))\ndata = pd.series(np.random.rand(6),index=index)\ndata.index.name=['char','int']\ndata\ntry:\n    data['a':'b']\nexcept keyError as e:\n    print(type(e))\n    print(e)\n    data = data.sort_index()\n    data\n    data['a':'b']\n    pop.unstack(level=0)\n    pop.unstack(level=1)\n    pop.unstack().stack()\n    pop_flat = pop.reset_index(name='population')\n    pop_flat\n    pop_flat.set_index(['state','year'])\n    health_data\n    pop.unstack().stack()\n    pop_flat = pop.reset_index(name='population')\n    pop_flat\n    pop_flat.set_index(['states','year'])\n    health_data\n    data_mean = health_data.mean(level='year')\n    data_mean.mean(axis=1,level='type')",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "ename": "<class 'SyntaxError'>",
+          "evalue": "closing parenthesis ']' does not match opening parenthesis '(' (<ipython-input-3-ab831a2d0c6c>, line 14)",
+          "traceback": [
+            "  \u001b[36mCell\u001b[39m\u001b[36m \u001b[39m\u001b[32mIn[3]\u001b[39m\u001b[32m, line 14\u001b[39m\n\u001b[31m    \u001b[39m\u001b[31mindex = pd.multiIndex.from_product((['a','c','b'],[1,2]]))\u001b[39m\n                                                           ^\n\u001b[31mSyntaxError\u001b[39m\u001b[31m:\u001b[39m closing parenthesis ']' does not match opening parenthesis '('\n"
+          ],
+          "output_type": "error"
+        }
+      ],
+      "execution_count": 3
+    },
+    {
+      "id": "769f1640-eeaf-45b8-8f29-f798cddb4c1a",
+      "cell_type": "code",
+      "source": "import numpy as np\nimport pandas as pd\nindex = pd.MultiIndex.from_product([[2013, 2014], [1, 2]], names=['year', 'visit'])\ncolumns = pd.MultiIndex.from_product([['bob', 'guido', 'sue'], ['HR', 'Temp']], names=['name', 'dept'])\ndata = np.round(np.random.randn(4, 6), 1)\nhealth_data = pd.DataFrame(data, index=index, columns=columns)\nprint(health_data['guido'])                 \nprint(health_data['guido', 'HR'])           \nprint(health_data.iloc[:2, :2])             \nprint(health_data.loc[:, ('bob', 'HR')])   \nidx = pd.IndexSlice\nprint(health_data.loc[idx[:, 1], idx[:, 'HR']])\nindex = pd.MultiIndex.from_product([['a', 'c', 'b'], [1, 2]])\ndata = pd.DataFrame(np.random.randn(6, 2), index=index, columns=['X', 'Y'])\ndata.index.names = ['char', 'int']\ntry:\n    data['a':'b']\nexcept KeyError as e:\n    print(type(e))\n    print(e)\ndata = data.sort_index()\nprint(data)\nprint(data['a':'b'])  \npop = pd.Series(\n    [356, 398, 512, 600],\n    index=pd.MultiIndex.from_product([['california', 'new york'], [2000, 2010]]),\n    name='population'\n)\n\nprint(pop['california', 2000])              \nprint(pop['california'])                    \nprint(pop.loc['california':'new york'])     \nprint(pop[:, 2000])                         \nprint(pop[pop > 400])                       \nprint(pop.unstack(level=0))\nprint(pop.unstack(level=1))\nprint(pop.unstack().stack())\npop_flat = pop.reset_index()  \nprint(pop_flat)\ndata_mean = health_data.T.groupby(level='dept').mean().T\nprint(data_mean)\nprint(data_mean.mean(axis=1))  # Mean across departments",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "dept         HR  Temp\nyear visit           \n2013 1      0.2   0.5\n     2      2.6   3.5\n2014 1      0.2  -0.2\n     2      2.5  -0.9\nyear  visit\n2013  1        0.2\n      2        2.6\n2014  1        0.2\n      2        2.5\nName: (guido, HR), dtype: float64\nname        bob     \ndept         HR Temp\nyear visit          \n2013 1      0.1 -0.4\n     2      1.0 -1.1\nyear  visit\n2013  1        0.1\n      2        1.0\n2014  1       -0.5\n      2        0.2\nName: (bob, HR), dtype: float64\nname        bob guido  sue\ndept         HR    HR   HR\nyear visit                \n2013 1      0.1   0.2  1.1\n2014 1     -0.5   0.2  1.3\n<class 'pandas.errors.UnsortedIndexError'>\n'Key length (1) was greater than MultiIndex lexsort depth (0)'\n                 X         Y\nchar int                    \na    1   -0.127814 -1.276124\n     2   -0.117664  1.674946\nb    1    0.088463  0.610909\n     2    0.293382 -1.066222\nc    1   -0.763012 -0.426180\n     2    0.834218  0.293423\n                 X         Y\nchar int                    \na    1   -0.127814 -1.276124\n     2   -0.117664  1.674946\nb    1    0.088463  0.610909\n     2    0.293382 -1.066222\n356\n2000    356\n2010    398\nName: population, dtype: int64\ncalifornia  2000    356\n            2010    398\nnew york    2000    512\n            2010    600\nName: population, dtype: int64\ncalifornia    356\nnew york      512\nName: population, dtype: int64\nnew york  2000    512\n          2010    600\nName: population, dtype: int64\n      california  new york\n2000         356       512\n2010         398       600\n            2000  2010\ncalifornia   356   398\nnew york     512   600\ncalifornia  2000    356\n            2010    398\nnew york    2000    512\n            2010    600\ndtype: int64\n      level_0  level_1  population\n0  california     2000         356\n1  california     2010         398\n2    new york     2000         512\n3    new york     2010         600\ndept              HR      Temp\nyear visit                    \n2013 1      0.466667  0.366667\n     2      0.866667  1.066667\n2014 1      0.333333 -0.100000\n     2      0.900000 -1.566667\nyear  visit\n2013  1        0.416667\n      2        0.966667\n2014  1        0.116667\n      2       -0.333333\ndtype: float64\n"
+        }
+      ],
+      "execution_count": 4
+    },
+    {
+      "id": "a9a59f8e-3cdf-4b80-95d0-6355220698df",
+      "cell_type": "code",
+      "source": "",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [],
+      "execution_count": null
+    }
+  ]
+}
