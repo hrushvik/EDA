@@ -1,0 +1,51 @@
+{
+  "metadata": {
+    "kernelspec": {
+      "display_name": "Python (Pyodide)",
+      "language": "python",
+      "name": "python"
+    },
+    "language_info": {
+      "codemirror_mode": {
+        "name": "python",
+        "version": 3
+      },
+      "file_extension": ".py",
+      "mimetype": "text/x-python",
+      "name": "python",
+      "nbconvert_exporter": "python",
+      "pygments_lexer": "ipython3",
+      "version": "3.8"
+    }
+  },
+  "nbformat_minor": 5,
+  "nbformat": 4,
+  "cells": [
+    {
+      "id": "c30ce762-8af7-48ce-8756-62ad87ab243d",
+      "cell_type": "code",
+      "source": "import pandas as pd\ndata = {\n    'department': ['CSE', 'CSE', 'CSE', 'CSE',\n                   'AIML', 'AIML', 'AIML', 'AIML',\n                   'ECE', 'ECE', 'ECE', 'ECE'],\n    'gender': ['M', 'F', 'M', 'F',\n               'M', 'F', 'M', 'F',\n               'M', 'F', 'M', 'F'],\n    'salary': [40000, 45000, 42000, 48000,\n               50000, 55000, 52000, 58000,\n               35000, 38000, 37000, 40000]\n}\n\ndf = pd.DataFrame(data)\n\nprint(\"Employee DataFrame:\")\nprint(df)\npivot_table = pd.pivot_table(\n    df,\n    values='salary',\n    index='gender',\n    columns='department',\n    aggfunc='mean'\n)\n\nprint(\"\\nPivot Table (Average Salary):\")\nprint(pivot_table)",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [
+        {
+          "name": "stdout",
+          "output_type": "stream",
+          "text": "Employee DataFrame:\n   department gender  salary\n0         CSE      M   40000\n1         CSE      F   45000\n2         CSE      M   42000\n3         CSE      F   48000\n4        AIML      M   50000\n5        AIML      F   55000\n6        AIML      M   52000\n7        AIML      F   58000\n8         ECE      M   35000\n9         ECE      F   38000\n10        ECE      M   37000\n11        ECE      F   40000\n\nPivot Table (Average Salary):\ndepartment     AIML      CSE      ECE\ngender                               \nF           56500.0  46500.0  39000.0\nM           51000.0  41000.0  36000.0\n"
+        }
+      ],
+      "execution_count": 5
+    },
+    {
+      "id": "acd7111f-bee9-4d42-a616-b3901af5a42b",
+      "cell_type": "code",
+      "source": "",
+      "metadata": {
+        "trusted": true
+      },
+      "outputs": [],
+      "execution_count": null
+    }
+  ]
+}
